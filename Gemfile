@@ -10,6 +10,7 @@ gem 'rails', '~> 6.1.3', '>= 6.1.3.2'
 
 group :development, :test do
   gem 'byebug'
+  gem 'fasterer', '~> 0.9.0'
   gem 'rubocop', '~> 1.19'
   gem 'rubocop-performance', '~> 1.11', '>= 1.11.4'
   gem 'rubocop-rails', '~> 2.11', '>= 2.11.3'
