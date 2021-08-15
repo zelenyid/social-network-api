@@ -1,0 +1,21 @@
+PreCommit:
+  RuboCop:
+    enabled: true
+    on_warn: fail
+
+  Fasterer:
+    enabled: true
+    on_warn: fail
+    problem_on_unmodified_line: ignore
+
+  TrailingWhitespace:
+    enabled: true
+    exclude:
+      - '**/db/structure.sql'
+
+PostCheckout:
+  ALL:
+    quiet: true
+
+  IndexTags:
+    enabled: true
