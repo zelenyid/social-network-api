@@ -12,6 +12,7 @@ group :development, :test do
   gem 'byebug'
   gem 'fasterer', '~> 0.9.0'
   gem 'overcommit', '~> 0.58.0'
+  gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
   gem 'rubocop', '~> 1.19'
   gem 'rubocop-performance', '~> 1.11', '>= 1.11.4'
   gem 'rubocop-rails', '~> 2.11', '>= 2.11.3'
