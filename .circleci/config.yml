@@ -61,7 +61,7 @@ jobs:
       - image: circleci/postgres:12.0
         environment:
           POSTGRES_USER: postgresql
-          POSTGRES_DB: evowill_crm_test
+          POSTGRES_DB: social_network_api_test
           POSTGRES_PASSWORD: ""
     environment:
       BUNDLE_JOBS: "3"
