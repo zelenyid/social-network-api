@@ -13,6 +13,7 @@ group :development, :test do
   gem 'fasterer', '~> 0.9.0'
   gem 'overcommit', '~> 0.58.0'
   gem 'pry', '~> 0.14.1'
+  gem 'rspec_junit_formatter', '~> 0.4.1'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
   gem 'rubocop', '~> 1.19'
   gem 'rubocop-performance', '~> 1.11', '>= 1.11.4'
