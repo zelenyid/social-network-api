@@ -65,6 +65,14 @@ group :development, :test do
   # Autoload dotenv in Rails.
   # https://github.com/bkeepers/dotenv
   gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+
+  # Create objects from models
+  # https://github.com/thoughtbot/factory_bot_rails
+  gem 'factory_bot_rails', '~> 6.2'
+
+  # Generate fake data
+  # https://github.com/faker-ruby/faker
+  gem 'faker', '~> 2.19'
 end
 
 group :development do

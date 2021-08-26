@@ -8,10 +8,12 @@ module ObjectCreators
     )
   end
 
-  def create_user(params = {})
+  def create_user(params = {}) # rubocop:disable Metrics/MethodLength
     last_id = User.limit(1).order(id: :desc).pick(:id) || 0
     user = User.new(
       email: params[:name].present? ? "#{params[:name]}@test.com" : "testtest#{last_id + 1}@test.com",
+      name: 'Name',
+      surname: 'Surname',
       password: 'testtest',
       password_confirmation: 'testtest'
     )
@@ -32,7 +34,6 @@ module ObjectCreators
   end
 
   def get_jwt(login)
-    # NOTE: RSPEC sucks (uses HTTP_ because WTF)
     headers = { HTTP_JWT_AUD: 'test' }
     post '/users/sign_in', params: { user: { email: login, password: 'testtest' } }, headers: headers
     JSON.parse(response.body, object_class: OpenStruct).jwt
