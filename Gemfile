@@ -77,3 +77,13 @@ group :development do
   # https://github.com/ctran/annotate_models
   gem 'annotate', '~> 3.1', '>= 3.1.1'
 end
+
+group :test do
+  # Code coverage
+  # https://github.com/colszowka/simplecov
+  gem 'simplecov', require: false
+
+  # Clear out database between runs
+  # https://github.com/DatabaseCleaner/database_cleaner-active_record
+  gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
+end

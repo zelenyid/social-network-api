@@ -26,6 +26,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+/coverage/*
+
 # RubyMine
 .idea
-.evn.development
+.env
