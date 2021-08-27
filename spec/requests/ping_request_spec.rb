@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Pings', type: :request do
+  let!(:user) { create(:confirmed_user) }
+
   it 'Returns a status of 200' do
     get '/ping/'
     expect(response).to have_http_status(:ok)
@@ -12,8 +14,7 @@ RSpec.describe 'Pings', type: :request do
   end
 
   it 'Returns a status of 200 if logged in' do
-    user = create_user
-    headers = get_headers(user.email)
+    headers = get_headers(user.email, user.password)
     get '/ping/auth/', headers: headers
     expect(response).to have_http_status(:ok)
   end
