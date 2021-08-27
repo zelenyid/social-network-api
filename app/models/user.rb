@@ -35,6 +35,8 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: self
 
+  has_many :posts, dependent: :destroy
+
   def for_display
     {
       email: email,

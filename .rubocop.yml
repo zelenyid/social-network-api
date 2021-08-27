@@ -26,6 +26,9 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
 

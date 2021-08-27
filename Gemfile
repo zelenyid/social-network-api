@@ -31,6 +31,14 @@ gem 'devise-jwt', '~> 0.8.1'
 # https://github.com/cyu/rack-cors
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 
+# A Ruby framework for rapid API development with great conventions.
+# https://github.com/ruby-grape/grape
+gem 'grape', '~> 1.5', '>= 1.5.3'
+
+# Represent use cases in a simple and powerful way while writing modular, expressive and sequentially logical code.
+# https://github.com/serradura/u-case
+gem 'u-case', '~> 4.5', '>= 4.5.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
