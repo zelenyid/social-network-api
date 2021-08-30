@@ -1,37 +1,22 @@
 class API::V2::PostsController < API::V2::ApplicationController
   def index
-    posts = Post.all
-
-    render json: posts
+    render json: Post.all
   end
 
   def show
-    post = Post.find_by(id: params[:id])
-
-    render json: post
+    render json: PostProcessing::Shower.show!(params[:id])
   end
 
   def create
-    render json: PostProcessing::Creator.call(post_params)
+    render json: PostProcessing::Creator.create!(post_params, current_user)
   end
 
   def update
-    post = Post.find_by(id: params[:id])
-
-    post.update(post_params)
-
-    render json: post
+    render json: PostProcessing::Updater.update!(params[:id], post_params)
   end
 
   def destroy
-    post = Post.find_by(id: params[:id])
-
-    if post
-      post.destroy
-      render json: { status: 'Succesfully destroyed' }
-    else
-      render json: { error: 'Not found' }, status: :not_found
-    end
+    render json: PostProcessing::Destroyer.destroy!(params[:id])
   end
 
   private

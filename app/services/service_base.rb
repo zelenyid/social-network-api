@@ -1,2 +1,2 @@
-class ServiceBase < Micro::Case
+class ServiceBase
 end

@@ -32,6 +32,9 @@ Style/ClassAndModuleChildren:
 Layout/LineLength:
   Max: 120
 
+Lint/EmptyClass:
+  Enabled: false
+
 RSpec/MultipleExpectations:
   Enabled: false
 
