@@ -13,12 +13,9 @@ class PostProcessing::Destroyer
 
   def destroy!
     post = Post.find_by(id: @post_id)
+    return unless post
 
-    if post
-      post.destroy
-      { status: 'Succesfully destroyed' }
-    else
-      { error: 'Not found' }
-    end
+    post.destroy
+    { status: 'Succesfully destroyed' }
   end
 end

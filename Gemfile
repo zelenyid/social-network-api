@@ -35,6 +35,10 @@ gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 # https://github.com/ruby-grape/grape
 gem 'grape', '~> 1.5', '>= 1.5.3'
 
+# Creating entity templates for grape
+# https://github.com/ruby-grape/grape-entity
+gem 'grape-entity', '~> 0.9.0'
+
 # Represent use cases in a simple and powerful way while writing modular, expressive and sequentially logical code.
 # https://github.com/serradura/u-case
 gem 'u-case', '~> 4.5', '>= 4.5.1'

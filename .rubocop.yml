@@ -41,3 +41,4 @@ RSpec/MultipleExpectations:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - app/api/**/*
