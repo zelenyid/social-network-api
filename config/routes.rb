@@ -6,18 +6,11 @@ Rails.application.routes.draw do
                registrations: 'registrations',
                sessions: 'sessions'
              }
-  mount PostAPI::Post => '/'
+  mount SocialNetwork::Base => '/'
 
-  # Ping to ensure site is up
-  resources :ping, only: [:index] do
-    collection do
-      get :auth
-    end
-  end
-
-  namespace :api do
-    namespace :v2 do
-      resources :posts
-    end
-  end
+  # namespace :api do
+  #   namespace :v2 do
+  #     resources :posts
+  #   end
+  # end
 end
