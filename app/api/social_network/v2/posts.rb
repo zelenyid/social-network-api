@@ -45,6 +45,7 @@ class SocialNetwork::V2::Posts < Grape::API
       end
     end
     put ':id' do
+      not_found if Post.find_by(id: params[:id]).blank?
       post = PostProcessing::Updater.update!(params[:id], params[:post])
 
       present post, with: Entities::PostEntity
