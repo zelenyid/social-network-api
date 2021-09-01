@@ -1,6 +1,6 @@
 if Rails.env.development?
   require 'annotate'
-  task :set_annotation_options do # rubocop:disable Metrics/BlockLength
+  task set_annotation_options: :environment do # rubocop:disable Metrics/BlockLength
     Annotate.set_defaults(
       'active_admin' => 'false',
       'additional_file_patterns' => [],

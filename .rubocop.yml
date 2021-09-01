@@ -29,6 +29,9 @@ Style/RedundantFetchBlock:
 Layout/LineLength:
   Max: 120
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
