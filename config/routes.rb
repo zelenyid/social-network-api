@@ -6,11 +6,6 @@ Rails.application.routes.draw do
                registrations: 'registrations',
                sessions: 'sessions'
              }
-  mount SocialNetwork::Base => '/'
 
-  # namespace :api do
-  #   namespace :v2 do
-  #     resources :posts
-  #   end
-  # end
+  mount SocialNetwork::Base => '/'
 end
