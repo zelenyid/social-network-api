@@ -38,6 +38,9 @@ Lint/EmptyClass:
 RSpec/MultipleExpectations:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Max: 10
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*

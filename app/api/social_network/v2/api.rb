@@ -3,4 +3,5 @@ class SocialNetwork::V2::API < Grape::API
   format :json
 
   mount SocialNetwork::V2::Posts
+  mount SocialNetwork::V2::Posts::Comments
 end
