@@ -23,26 +23,12 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
-  include Devise::JWT::RevocationStrategies::Allowlist
-
-  devise :database_authenticatable,
-         :confirmable,
-         :registerable,
-         :recoverable,
-         :rememberable,
-         :validatable,
-         :jwt_authenticatable,
-         jwt_revocation_strategy: self
-
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-
-  def for_display
-    {
-      email: email,
-      id: id
-    }
+FactoryBot.define do
+  factory :user do
+    email { Faker::Internet.email }
+    name { Faker::Name.first_name }
+    surname { Faker::Name.last_name }
+    password { Faker::Internet.password }
+    password_confirmation(&:password)
   end
 end

@@ -16,8 +16,9 @@
 #
 #  fk_rails_...  (user_id => users.id) ON DELETE => cascade
 #
-class Post < ApplicationRecord
-  has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  belongs_to :user
+FactoryBot.define do
+  factory :post do
+    association :user, factory: :user
+    content { Faker::Quote.famous_last_words }
+  end
 end
