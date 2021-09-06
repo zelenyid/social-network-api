@@ -39,6 +39,10 @@ gem 'grape', '~> 1.5', '>= 1.5.3'
 # https://github.com/ruby-grape/grape-entity
 gem 'grape-entity', '~> 0.9.0'
 
+# Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

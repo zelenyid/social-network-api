@@ -33,3 +33,6 @@
 .env
 
 .ruby-gemset
+
+# Ignore uploaded files in development
+/public/uploads
