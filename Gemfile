@@ -47,6 +47,10 @@ gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 # https://github.com/fog/fog-aws
 gem 'fog-aws', '~> 3.12'
 
+# Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
+# https://github.com/minimagick/minimagick
+gem 'mini_magick', '~> 4.11'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

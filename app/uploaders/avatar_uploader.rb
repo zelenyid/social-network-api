@@ -12,11 +12,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def content_type_allowlist
-    /image\//
+    %r{image/}
   end
 
   def extension_allowlist
-    %w(jpg jpeg png)
+    %w[jpg jpeg png]
   end
 
   def filename
@@ -24,7 +24,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def size_range
-    1.byte..2.megabytes
+    (1.byte)..(2.megabytes)
   end
 
   protected

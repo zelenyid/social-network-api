@@ -6,16 +6,14 @@ CarrierWave.configure do |config|
     region: ENV['AWS_REGION']
   }
 
-  if Rails.env.development?
-    config.storage = :file
-  end
+  config.storage = :file if Rails.env.development?
 
   if Rails.env.production?
     config.storage = :fog
     config.fog_directory = ENV['AWS_BUCKET']
   end
 
-  config.permissions = 0600
+  config.permissions = 0o600
   config.fog_public = false
   config.fog_attributes = { cache_control: "public, max-age=#{365.days.to_i}" }
 end

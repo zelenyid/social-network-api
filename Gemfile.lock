@@ -356,6 +356,7 @@ DEPENDENCIES
   grape (~> 1.5, >= 1.5.3)
   grape-entity (~> 0.9.0)
   listen (~> 3.3)
+  mini_magick (~> 4.11)
   overcommit (~> 0.58.0)
   pg (~> 1.1)
   pry (~> 0.14.1)
