@@ -43,6 +43,10 @@ gem 'grape-entity', '~> 0.9.0'
 # https://github.com/carrierwaveuploader/carrierwave
 gem 'carrierwave', '~> 2.2', '>= 2.2.2'
 
+# To use the Amazon Web Services in applications
+# https://github.com/fog/fog-aws
+gem 'fog-aws', '~> 3.12'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
