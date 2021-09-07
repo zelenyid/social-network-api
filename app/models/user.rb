@@ -36,6 +36,8 @@ class User < ApplicationRecord
          :jwt_authenticatable,
          jwt_revocation_strategy: self
 
+  validates :email, :name, :surname, presence: true
+
   mount_uploader :avatar, AvatarUploader
 
   has_many :posts, dependent: :destroy

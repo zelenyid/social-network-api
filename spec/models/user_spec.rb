@@ -27,5 +27,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Table structure' do
+    it { is_expected.to have_db_column(:email).of_type(:string) }
+    it { is_expected.to have_db_column(:name).of_type(:string) }
+    it { is_expected.to have_db_column(:surname).of_type(:string) }
+    it { is_expected.to have_db_column(:avatar).of_type(:jsonb) }
+  end
+
+  describe 'Table indexes' do
+    it { is_expected.to have_db_index(:email) }
+  end
+
+  describe 'Model validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:surname) }
+    it { is_expected.to validate_presence_of(:email) }
+  end
+
+  describe 'Model relations' do
+    it { is_expected.to have_many(:posts).dependent(:destroy) }
+    it { is_expected.to have_many(:comments).dependent(:destroy) }
+    it { is_expected.to have_many(:likes).dependent(:destroy) }
+  end
 end

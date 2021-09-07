@@ -110,4 +110,8 @@ group :test do
   # Clear out database between runs
   # https://github.com/DatabaseCleaner/database_cleaner-active_record
   gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
+
+  # Helpers for tests
+  # https://matchers.shoulda.io/
+  gem 'shoulda-matchers', '~> 5.0'
 end
