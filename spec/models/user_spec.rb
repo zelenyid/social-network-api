@@ -45,8 +45,34 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Model relations' do
+    subject(:user) { described_class.new }
+
     it { is_expected.to have_many(:posts).dependent(:destroy) }
     it { is_expected.to have_many(:comments).dependent(:destroy) }
-    it { is_expected.to have_many(:likes).dependent(:destroy) }
+
+    it 'has many sended_invitations' do
+      expect(user).to have_many(:sended_invitations).class_name('Friendship').with_foreign_key('user_sender_id')
+                                                    .inverse_of(:user_sender).dependent(:destroy)
+    end
+
+    it 'has many received_invitations' do
+      expect(user).to have_many(:received_invitations).class_name('Friendship').with_foreign_key('user_receiver_id')
+                                                      .inverse_of(:user_receiver).dependent(:destroy)
+    end
+  end
+
+  describe '#friends & #friend_with?' do
+    let(:user) { create(:user) }
+    let(:friends) { create_list(:user, 5) }
+
+    before do
+      friends.each do |friend|
+        create(:friendship, user_sender: user, user_receiver: friend)
+      end
+    end
+
+    it { friends.should match_array(user.friends) }
+    it { user.friend_with?(friends.first).should eq true }
+    it { friends.first.friend_with?(friends.second).should eq false }
   end
 end

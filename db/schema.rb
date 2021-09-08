@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_064839) do
+ActiveRecord::Schema.define(version: 2021_09_08_150206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 2021_09_06_064839) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_sender_id", null: false
+    t.integer "user_receiver_id", null: false
+    t.integer "status", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index "GREATEST(user_sender_id, user_receiver_id), LEAST(user_sender_id, user_receiver_id)", name: "index_requests_on_interchangable_sender_id_and_receiver_id", unique: true
+    t.index "LEAST(user_sender_id, user_receiver_id), GREATEST(user_sender_id, user_receiver_id)", name: "index_requests_on_interchangable_receiver_id_and_sender_id", unique: true
+    t.index ["user_sender_id", "user_receiver_id"], name: "index_friendships_on_user_sender_id_and_user_receiver_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|
