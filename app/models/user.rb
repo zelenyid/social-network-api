@@ -45,6 +45,8 @@ class User < ApplicationRecord
   has_many :received_invitations, class_name: 'Friendship', foreign_key: 'user_receiver_id',
                                   inverse_of: :user_receiver, dependent: :destroy
 
+  has_many :conversations, inverse_of: :user_sender, dependent: :destroy
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
