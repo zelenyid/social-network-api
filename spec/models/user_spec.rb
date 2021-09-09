@@ -75,4 +75,17 @@ RSpec.describe User, type: :model do
     it { user.friend_with?(friends.first).should eq true }
     it { friends.first.friend_with?(friends.second).should eq false }
   end
+
+  describe '#pending_invitations' do
+    let(:user) { create(:user) }
+    let(:friends) { create_list(:user, 5) }
+
+    before do
+      friends.each do |friend|
+        create(:friendship, user_sender: friend, user_receiver: user, status: :sended)
+      end
+    end
+
+    it { friends.should match_array(user.pending_invitations) }
+  end
 end

@@ -64,6 +64,10 @@ class User < ApplicationRecord
     User.where(id: ids)
   end
 
+  def pending_invitations
+    User.where(id: received_invitations.sended.pluck(:user_sender_id))
+  end
+
   def friend_with?(user)
     send_friendship = sended_invitations.accepted.where(user_receiver_id: user.id).present?
     receive_friendship = received_invitations.accepted.where(user_sender_id: user.id).present?

@@ -21,7 +21,7 @@ class Friendship < ApplicationRecord
   belongs_to :user_sender, class_name: 'User'
   belongs_to :user_receiver, class_name: 'User'
 
-  enum status: { sended: 0, rejected: 1, destroyed: 2, accepted: 3 }, _prefix: true
+  enum status: { sended: 0, accepted: 1 }, _prefix: true
 
   validates :status, presence: true
 

@@ -22,6 +22,6 @@ FactoryBot.define do
     association :user_sender, factory: :user
     association :user_receiver, factory: :user
 
-    status { :accepted } # [:sended, :rejected, :destroyed, :accepted]
+    status { :accepted } # [:sended, :accepted]
   end
 end
