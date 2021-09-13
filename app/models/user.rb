@@ -36,6 +36,7 @@ class User < ApplicationRecord
          jwt_revocation_strategy: self
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def for_display
     {
