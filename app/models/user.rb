@@ -16,6 +16,7 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  avatar                 :jsonb
 #
 # Indexes
 #
@@ -34,6 +35,10 @@ class User < ApplicationRecord
          :validatable,
          :jwt_authenticatable,
          jwt_revocation_strategy: self
+
+  validates :email, :name, :surname, presence: true
+
+  mount_uploader :avatar, AvatarUploader
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy

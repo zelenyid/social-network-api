@@ -39,6 +39,18 @@ gem 'grape', '~> 1.5', '>= 1.5.3'
 # https://github.com/ruby-grape/grape-entity
 gem 'grape-entity', '~> 0.9.0'
 
+# Upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
+# https://github.com/carrierwaveuploader/carrierwave
+gem 'carrierwave', '~> 2.2', '>= 2.2.2'
+
+# To use the Amazon Web Services in applications
+# https://github.com/fog/fog-aws
+gem 'fog-aws', '~> 3.12'
+
+# Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
+# https://github.com/minimagick/minimagick
+gem 'mini_magick', '~> 4.11'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -102,4 +114,8 @@ group :test do
   # Clear out database between runs
   # https://github.com/DatabaseCleaner/database_cleaner-active_record
   gem 'database_cleaner-active_record', '~> 2.0', '>= 2.0.1'
+
+  # Helpers for tests
+  # https://matchers.shoulda.io/
+  gem 'shoulda-matchers', '~> 5.0'
 end
