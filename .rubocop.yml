@@ -26,8 +26,14 @@ Style/GlobalStdStream:
 Style/RedundantFetchBlock:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
+
+Lint/EmptyClass:
+  Enabled: false
 
 RSpec/MultipleExpectations:
   Enabled: false
@@ -35,3 +41,4 @@ RSpec/MultipleExpectations:
 Metrics/BlockLength:
   Exclude:
     - spec/**/*
+    - app/api/**/*

@@ -31,3 +31,5 @@
 # RubyMine
 .idea
 .env
+
+.ruby-gemset

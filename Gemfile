@@ -31,6 +31,14 @@ gem 'devise-jwt', '~> 0.8.1'
 # https://github.com/cyu/rack-cors
 gem 'rack-cors', '~> 1.1', '>= 1.1.1'
 
+# A Ruby framework for rapid API development with great conventions.
+# https://github.com/ruby-grape/grape
+gem 'grape', '~> 1.5', '>= 1.5.3'
+
+# Creating entity templates for grape
+# https://github.com/ruby-grape/grape-entity
+gem 'grape-entity', '~> 0.9.0'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

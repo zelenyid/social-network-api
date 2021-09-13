@@ -7,10 +7,5 @@ Rails.application.routes.draw do
                sessions: 'sessions'
              }
 
-  # Ping to ensure site is up
-  resources :ping, only: [:index] do
-    collection do
-      get :auth
-    end
-  end
+  mount SocialNetwork::Base => '/'
 end
