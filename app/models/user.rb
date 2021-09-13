@@ -40,6 +40,11 @@ class User < ApplicationRecord
 
   mount_uploader :avatar, AvatarUploader
 
+  has_many :sended_invitations, class_name: 'Friendship', foreign_key: 'user_sender_id', inverse_of: :user_sender,
+                                dependent: :destroy
+  has_many :received_invitations, class_name: 'Friendship', foreign_key: 'user_receiver_id',
+                                  inverse_of: :user_receiver, dependent: :destroy
+
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -49,5 +54,24 @@ class User < ApplicationRecord
       email: email,
       id: id
     }
+  end
+
+  def friends
+    friends_i_sent_invitation = sended_invitations.accepted.pluck(:user_receiver_id)
+    friends_i_got_invitation = received_invitations.accepted.pluck(:user_sender_id)
+    ids = friends_i_sent_invitation + friends_i_got_invitation
+
+    User.where(id: ids)
+  end
+
+  def pending_invitations
+    User.where(id: received_invitations.sended.pluck(:user_sender_id))
+  end
+
+  def friend_with?(user)
+    send_friendship = sended_invitations.accepted.where(user_receiver_id: user.id).present?
+    receive_friendship = received_invitations.accepted.where(user_sender_id: user.id).present?
+
+    send_friendship || receive_friendship
   end
 end

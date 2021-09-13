@@ -1,8 +1,9 @@
 # == Schema Information
 #
-# Table name: likes
+# Table name: comments
 #
 #  id         :bigint           not null, primary key
+#  content    :text             not null
 #  user_id    :bigint           not null
 #  post_id    :bigint           not null
 #  created_at :datetime         not null
@@ -10,8 +11,8 @@
 #
 # Indexes
 #
-#  index_likes_on_post_id  (post_id)
-#  index_likes_on_user_id  (user_id)
+#  index_comments_on_post_id  (post_id)
+#  index_comments_on_user_id  (user_id)
 #
 # Foreign Keys
 #
@@ -20,7 +21,7 @@
 #
 require 'rails_helper'
 
-RSpec.describe Like, type: :model do
+RSpec.describe Comment, type: :model do
   describe 'Model relations' do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:post) }
