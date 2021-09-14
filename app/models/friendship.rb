@@ -12,10 +12,8 @@
 # Indexes
 #
 #  index_friendships_on_user_sender_id_and_user_receiver_id    (user_sender_id,user_receiver_id) UNIQUE
-#  index_requests_on_interchangable_receiver_id_and_sender_id
-#          (LEAST(user_sender_id, user_receiver_id), GREATEST(user_sender_id, user_receiver_id)) UNIQUE
-#  index_requests_on_interchangable_sender_id_and_receiver_id
-#          (GREATEST(user_sender_id, user_receiver_id), LEAST(user_sender_id, user_receiver_id)) UNIQUE
+#  index_requests_on_interchangable_receiver_id_and_sender_id  (LEAST(user_sender_id, user_receiver_id), GREATEST(user_sender_id, user_receiver_id)) UNIQUE
+#  index_requests_on_interchangable_sender_id_and_receiver_id  (GREATEST(user_sender_id, user_receiver_id), LEAST(user_sender_id, user_receiver_id)) UNIQUE
 #
 class Friendship < ApplicationRecord
   belongs_to :user_sender, class_name: 'User'
