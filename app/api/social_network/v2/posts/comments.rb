@@ -15,6 +15,8 @@ class SocialNetwork::V2::Posts::Comments < Grape::API
         post = Post.find_by(id: params[:post_id])
         not_found if post.blank?
 
+        authorize Comment, :show?
+
         present post.comments, with: Entities::CommentEntity
       end
 
@@ -29,6 +31,8 @@ class SocialNetwork::V2::Posts::Comments < Grape::API
       post do
         post = Post.find_by(id: params[:post_id])
         not_found if post.blank?
+
+        authorize Comment, :create?
 
         comment = post.comments.create!(params[:comment].merge(user: current_user))
 
@@ -50,6 +54,8 @@ class SocialNetwork::V2::Posts::Comments < Grape::API
         comment = post.comments.find_by(id: params[:id])
         not_found if comment.blank?
 
+        authorize comment, :update?
+
         comment.update!(params[:comment])
 
         present comment, with: Entities::CommentEntity
@@ -66,6 +72,8 @@ class SocialNetwork::V2::Posts::Comments < Grape::API
         not_found if post.blank?
         comment = post.comments.find_by(id: params[:id])
         not_found if comment.blank?
+
+        authorize comment, :destroy?
 
         comment.destroy
         { status: 'Succesfully destroyed' }
