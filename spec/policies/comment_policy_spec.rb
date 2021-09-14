@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe CommentPolicy, type: :policy do
+  subject { described_class }
+
   let(:user) { create(:user) }
   let(:second_user) { create(:user) }
   let(:third_user) { create(:user) }
   let(:admin) { create(:user, admin: true) }
   let(:post) { create(:post, user: user) }
   let(:comment) { create(:comment, post: post, user: second_user) }
-
-  subject { described_class }
 
   permissions :show? do
     context 'when auth user' do
