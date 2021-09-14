@@ -26,6 +26,8 @@ class SocialNetwork::V2::Posts::Likes < Grape::API
         requires :post_id, type: Integer, desc: 'Post ID'
       end
       post do
+        LikePolicy.new(current_user, @post).create?
+
         if already_liked?
           { status: 'You can\'t like more than once' }
         else
@@ -44,6 +46,8 @@ class SocialNetwork::V2::Posts::Likes < Grape::API
         if already_liked?
           like = @post.likes.find_by(id: params[:id])
           not_found if like.blank?
+
+          authorize like, :destroy?
 
           like.destroy
           { status: 'Like destroyed' }
