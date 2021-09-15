@@ -5,9 +5,12 @@ RSpec.describe 'Posts CRUD', type: :request do
   let(:headers) { get_headers(user.email, user.password) }
 
   describe 'GET /api/v2/posts' do
-    context 'when we have posts' do
+    context 'when we have friends posts' do
+      let(:friend) { create(:user) }
+
       before do
-        create_list(:post, 6)
+        create(:friendship, user_sender: user, user_receiver: friend)
+        create_list(:post, 6, user: friend)
         get '/api/v2/posts', headers: headers
       end
 
@@ -15,8 +18,11 @@ RSpec.describe 'Posts CRUD', type: :request do
       it { expect(json.count).to eq(6) }
     end
 
-    context 'when we haven\'t posts' do
+    context 'when we haven\'t friends posts' do
+      let(:friend) { create(:user) }
+
       before do
+        create_list(:post, 6, user: friend)
         get '/api/v2/posts', headers: headers
       end
 

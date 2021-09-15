@@ -6,11 +6,15 @@ class SocialNetwork::V2::Posts < Grape::API
     before { authenticate! }
 
     # GET /api/v2/posts
-    desc 'Return all posts'
+    desc 'Return friends\' posts'
+    params do
+      optional :post_order, type: String, default: :time, desc: 'Order of posts'
+    end
     get do
       authorize Post, :index?
 
-      present Post.all, with: Entities::PostEntity
+      posts = PostProcessing::FriendsPosts.call(current_user, params[:post_order])
+      present posts, with: Entities::PostEntity
     end
 
     # GET /api/v2/posts/:id
