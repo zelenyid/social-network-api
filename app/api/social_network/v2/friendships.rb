@@ -23,6 +23,8 @@ class SocialNetwork::V2::Friendships < Grape::API
     post ':friend_id' do
       authorize Friendship, :create?
 
+      FriendshipMailer.with(sender: current_user, receiver: @friend).friend_request.deliver_later
+
       Friendship.create(user_sender: current_user, user_receiver: @friend, status: :sended)
     rescue ActiveRecord::RecordNotUnique
       { status: 'Friendship already exist' }

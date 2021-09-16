@@ -91,4 +91,10 @@ RSpec.describe User, type: :model do
 
     it { friends.should match_array(user.pending_invitations) }
   end
+
+  describe '#full_name' do
+    let(:user) { create(:user, name: 'Name', surname: 'Surname') }
+
+    it { expect(user.full_name).to eq('Name Surname') }
+  end
 end
