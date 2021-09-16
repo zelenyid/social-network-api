@@ -1,20 +1,20 @@
-class FriendshipPolicy < ApplicationPolicy
-  def create?
+class ProfilePolicy < ApplicationPolicy
+  def show?
     return false if user&.banned?
 
     user.admin? || user.user_role? if user
   end
 
-  def update?
+  def ban?
     return false if user&.banned?
 
-    record.user_receiver == user if user
+    user&.admin?
   end
 
-  def destroy?
+  def unban?
     return false if user&.banned?
 
-    record.user_receiver == user || record.user_sender == user if user
+    user&.admin?
   end
 
   class Scope < Scope
