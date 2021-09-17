@@ -28,6 +28,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  include PgSearch::Model
   include Devise::JWT::RevocationStrategies::Allowlist
 
   devise :database_authenticatable,
@@ -53,6 +54,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  pg_search_scope :search_by_full_name, against: %i[name surname]
 
   def for_display
     {
