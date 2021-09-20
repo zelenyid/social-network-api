@@ -59,6 +59,14 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 # https://github.com/Casecommons/pg_search
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
 
+# Simple, efficient background processing for Ruby.
+# https://sidekiq.org/
+gem 'sidekiq', '~> 6.2', '>= 6.2.2'
+
+# Enables to set jobs to be run in specified time (using CRON notation)
+# https://github.com/ondrejbartas/sidekiq-cron
+gem 'sidekiq-cron', '~> 1.2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

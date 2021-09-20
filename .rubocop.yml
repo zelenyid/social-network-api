@@ -48,6 +48,9 @@ RSpec/NamedSubject:
 RSpec/MultipleMemoizedHelpers:
   Max: 10
 
+RSpec/LetSetup:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - spec/**/*

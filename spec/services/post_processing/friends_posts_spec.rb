@@ -5,9 +5,6 @@ RSpec.describe PostProcessing::FriendsPosts do
   let(:friend_a) { create(:user) }
   let(:friend_b) { create(:user) }
   let(:friend_c) { create(:user) }
-  # let!(:friendship_a) { create(:friendship, user_sender: user, user_receiver: friend_a) }
-  # let!(:friendship_b) { create(:friendship, user_sender: user, user_receiver: friend_b) }
-  # let!(:friendship_c) { create(:friendship, user_sender: user, user_receiver: friend_c) }
   let!(:friend_a_posts) { create_list(:post, 3, user: friend_a) }
   let!(:friend_b_posts) { create_list(:post, 3, user: friend_b) }
   let!(:friend_c_posts) { create_list(:post, 3, user: friend_c) }
