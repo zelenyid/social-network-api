@@ -1,0 +1,4 @@
+monthly_statistic:
+  cron: "0 0 1 * *"
+  class: "Cron::MonthlyStatisticJob"
+  queue: mailers

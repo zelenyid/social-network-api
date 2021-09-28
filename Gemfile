@@ -12,7 +12,7 @@ gem 'puma', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
+gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -58,6 +58,14 @@ gem 'pundit', '~> 2.1', '>= 2.1.1'
 # PgSearch builds Active Record named scopes that take advantage of PostgreSQL's full text search
 # https://github.com/Casecommons/pg_search
 gem 'pg_search', '~> 2.3', '>= 2.3.5'
+
+# Simple, efficient background processing for Ruby.
+# https://sidekiq.org/
+gem 'sidekiq', '~> 6.2.1'
+
+# Enables to set jobs to be run in specified time (using CRON notation)
+# https://github.com/ondrejbartas/sidekiq-cron
+gem 'sidekiq-cron', '~> 1.2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
