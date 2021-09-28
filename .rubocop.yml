@@ -31,11 +31,18 @@ Style/ClassAndModuleChildren:
 
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - app/models/friendship.rb
+    - spec/factories/friendships.rb
+    - spec/models/friendship_spec.rb
 
 Lint/EmptyClass:
   Enabled: false
 
 RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NamedSubject:
   Enabled: false
 
 RSpec/MultipleMemoizedHelpers:

@@ -22,6 +22,8 @@ class SocialNetwork::V2::Conversations::Messages < Grape::API
         requires :conversation_id, type: Integer, desc: 'Conversation ID'
       end
       get do
+        MessagePolicy.new(current_user, @conversation).show?
+
         messages = @conversation.messages
 
         present messages, with: Entities::MessageEntity
@@ -36,6 +38,8 @@ class SocialNetwork::V2::Conversations::Messages < Grape::API
         end
       end
       post do
+        MessagePolicy.new(current_user, @conversation).create?
+
         message = @conversation.messages.create(params[:message].merge({ user_id: current_user.id }))
 
         present message, with: Entities::MessageEntity

@@ -21,6 +21,8 @@ class SocialNetwork::V2::Friendships < Grape::API
       requires :friend_id, type: Integer, desc: 'User ID'
     end
     post ':friend_id' do
+      authorize Friendship, :create?
+
       Friendship.create(user_sender: current_user, user_receiver: @friend, status: :sended)
     rescue ActiveRecord::RecordNotUnique
       { status: 'Friendship already exist' }
@@ -36,6 +38,8 @@ class SocialNetwork::V2::Friendships < Grape::API
       friendship = Friendship.sended.where(user_sender: pending_invitation).first
 
       if friendship.present?
+        authorize friendship, :update?
+
         friendship.update!(status: :accepted)
 
         friendship
@@ -56,6 +60,8 @@ class SocialNetwork::V2::Friendships < Grape::API
                                                                     )).first
 
       if friendship.present?
+        authorize friendship, :destroy?
+
         friendship.destroy
 
         { status: 'Friendship destroyed' }

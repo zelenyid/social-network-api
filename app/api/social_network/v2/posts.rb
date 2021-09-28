@@ -8,6 +8,8 @@ class SocialNetwork::V2::Posts < Grape::API
     # GET /api/v2/posts
     desc 'Return all posts'
     get do
+      authorize Post, :index?
+
       present Post.all, with: Entities::PostEntity
     end
 
@@ -18,8 +20,10 @@ class SocialNetwork::V2::Posts < Grape::API
     end
     get ':id' do
       post = PostProcessing::Shower.show!(params[:id])
-
       not_found if post.blank?
+
+      authorize post, :show?
+
       present post, with: Entities::PostEntity
     end
 
@@ -31,6 +35,8 @@ class SocialNetwork::V2::Posts < Grape::API
       end
     end
     post do
+      authorize Post, :create?
+
       post = PostProcessing::Creator.create!(params[:post], current_user)
 
       present post, with: Entities::PostEntity
@@ -45,7 +51,11 @@ class SocialNetwork::V2::Posts < Grape::API
       end
     end
     put ':id' do
-      not_found if Post.find_by(id: params[:id]).blank?
+      old_post = Post.find_by(id: params[:id])
+      not_found if old_post.blank?
+
+      authorize old_post, :update?
+
       post = PostProcessing::Updater.update!(params[:id], params[:post])
 
       present post, with: Entities::PostEntity
@@ -57,6 +67,9 @@ class SocialNetwork::V2::Posts < Grape::API
       requires :id, type: Integer, desc: 'Post ID'
     end
     delete ':id' do
+      post = Post.find_by(id: params[:id])
+      authorize post, :destroy? if post
+
       status = PostProcessing::Destroyer.destroy!(params[:id])
 
       status.presence || not_found

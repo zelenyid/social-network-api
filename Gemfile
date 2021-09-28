@@ -51,6 +51,10 @@ gem 'fog-aws', '~> 3.12'
 # https://github.com/minimagick/minimagick
 gem 'mini_magick', '~> 4.11'
 
+# Object oriented authorization for Rails applications
+# https://github.com/varvet/pundit
+gem 'pundit', '~> 2.1', '>= 2.1.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

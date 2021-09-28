@@ -17,6 +17,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  avatar                 :jsonb
+#  admin                  :boolean          default(FALSE)
+#  user_role              :boolean          default(TRUE)
 #
 # Indexes
 #

@@ -7,6 +7,8 @@ class SocialNetwork::V2::Conversations < Grape::API
     # GET /api/v2/conversations
     desc 'Get all conversations of the current user'
     get do
+      authorize Conversation, :show?
+
       conversations = current_user.conversations
 
       present conversations, with: Entities::ConversationEntity
@@ -20,6 +22,8 @@ class SocialNetwork::V2::Conversations < Grape::API
       end
     end
     post do
+      authorize Conversation, :create?
+
       conversation = Conversation.between(current_user.id, params[:conversation][:recipient_id])
 
       conversation = if conversation.present?
