@@ -108,6 +108,10 @@ group :development do
   # Annotates Rails/ActiveRecord Models, routes, fixtures, and others based on the database schema.
   # https://github.com/ctran/annotate_models
   gem 'annotate', '~> 3.1', '>= 3.1.1'
+
+  # Grape routes
+  # https://github.com/syedmusamah/grape_on_rails_routes
+  gem 'grape_on_rails_routes'
 end
 
 group :test do

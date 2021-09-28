@@ -19,6 +19,7 @@
 #  avatar                 :jsonb
 #  admin                  :boolean          default(FALSE)
 #  user_role              :boolean          default(TRUE)
+#  banned                 :boolean          default(FALSE)
 #
 # Indexes
 #

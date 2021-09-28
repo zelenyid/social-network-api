@@ -1,9 +1,13 @@
 class MessagePolicy < ApplicationPolicy
   def show?
+    return false if user&.banned?
+
     record.sender == user || record.recipient == user if user
   end
 
   def create?
+    return false if user&.banned?
+
     record.sender == user || record.recipient == user if user
   end
 

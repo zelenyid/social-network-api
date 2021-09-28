@@ -1,9 +1,13 @@
 class LikePolicy < ApplicationPolicy
   def create?
+    return false if user&.banned?
+
     record.user != user if user
   end
 
   def destroy?
+    return false if user&.banned?
+
     record.user == user if user
   end
 
