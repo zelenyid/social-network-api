@@ -79,4 +79,8 @@ class User < ApplicationRecord
 
     send_friendship || receive_friendship
   end
+
+  def full_name
+    "#{name} #{surname}"
+  end
 end
