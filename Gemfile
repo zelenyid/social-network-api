@@ -55,6 +55,10 @@ gem 'mini_magick', '~> 4.11'
 # https://github.com/varvet/pundit
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 
+# PgSearch builds Active Record named scopes that take advantage of PostgreSQL's full text search
+# https://github.com/Casecommons/pg_search
+gem 'pg_search', '~> 2.3', '>= 2.3.5'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
